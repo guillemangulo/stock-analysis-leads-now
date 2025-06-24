@@ -1,12 +1,14 @@
-
 import { CheckCircle, FileText, TrendingUp, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Solution = () => {
+  const { isVisible, elementRef } = useScrollAnimation();
+
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white" ref={elementRef}>
       <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto text-center mb-16">
+        <div className={`max-w-4xl mx-auto text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
             What If You Could Get Professional Analysis Every Morning?
           </h2>
@@ -17,7 +19,7 @@ const Solution = () => {
         </div>
         
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          <div className="space-y-8">
+          <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <div className="flex items-start gap-4">
               <div className="bg-blue-100 p-3 rounded-lg flex-shrink-0">
                 <TrendingUp className="w-6 h-6 text-blue-600" />
@@ -68,7 +70,7 @@ const Solution = () => {
             </Button>
           </div>
           
-          <div className="bg-gradient-to-br from-blue-50 to-gray-50 p-8 rounded-2xl">
+          <div className={`bg-gradient-to-br from-blue-50 to-gray-50 p-8 rounded-2xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
             <div className="bg-white p-6 rounded-xl shadow-lg mb-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
