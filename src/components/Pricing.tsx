@@ -1,8 +1,10 @@
-
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Pricing = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="py-20 bg-gradient-to-br from-blue-900 to-slate-900 text-white">
       <div className="container mx-auto px-6">
@@ -52,7 +54,11 @@ const Pricing = () => {
               ))}
             </div>
             
-            <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <Button 
+              size="lg" 
+              className="w-full bg-blue-600 hover:bg-blue-700 text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              onClick={() => navigate("/interest")}
+            >
               Start Free 7-Day Trial
             </Button>
             

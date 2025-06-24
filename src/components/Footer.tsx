@@ -1,7 +1,9 @@
-
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   return (
     <footer className="bg-slate-900 text-white py-20">
       <div className="container mx-auto px-6">
@@ -13,7 +15,11 @@ const Footer = () => {
             Join thousands of investors who start every trading day with confidence.
           </p>
           
-          <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-12 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 mb-8">
+          <Button 
+            size="lg" 
+            className="bg-blue-600 hover:bg-blue-700 text-lg px-12 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 mb-8"
+            onClick={() => navigate("/interest")}
+          >
             Start Your Free 7-Day Trial
           </Button>
           
