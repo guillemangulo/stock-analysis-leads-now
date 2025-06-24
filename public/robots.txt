@@ -1,3 +1,6 @@
+# Sitemap para acelerar la indexación
+Sitemap: https://investalyzer.vercel.app/sitemap.xml
+
 User-agent: Googlebot
 Allow: /
 
