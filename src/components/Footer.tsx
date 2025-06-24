@@ -15,16 +15,19 @@ const Footer = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Ready to Never Miss Another Market Move?
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
-              Join thousands of investors who start every trading day with confidence.
-            </p>
+            {/*
+              <p className="text-xl text-gray-300 mb-8">
+                Join thousands of investors who start every trading day with confidence.
+              </p>
+            */}
             
             <Button 
               size="lg" 
               className="bg-blue-600 hover:bg-blue-700 text-lg px-12 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 mb-8"
               onClick={() => navigate("/interest")}
             >
-              Start Your Free 7-Day Trial
+              {/* Start Free 7-Day Trial */}
+              Subscribe for Early Access
             </Button>
           </div>
           

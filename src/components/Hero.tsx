@@ -33,16 +33,9 @@ const Hero = () => {
               className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
               onClick={() => navigate("/interest")}
             >
-              Start Your Free 7-Day Trial
+              Subscribe to Join the Waitlist
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white text-lg px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
-              onClick={() => navigate("/interest")}
-            >
-              Watch Demo
-            </Button>
+           
           </div>
           
           <div className="flex items-center justify-center gap-8 text-sm text-gray-400 animate-fade-in animation-delay-800">

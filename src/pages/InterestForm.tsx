@@ -1,20 +1,34 @@
-
+// src/pages/InterestForm.tsx
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mail, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+// ① Importa el cliente
+import { supabase } from "@/lib/supabase";
 
 const InterestForm = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // ② Convierte en async y envía a Supabase
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the email to your backend
-    console.log("Email submitted:", email);
-    setIsSubmitted(true);
+    setErrorMsg(""); // resetea errores
+
+    // inserta en la tabla 'subscribers'
+    const { error } = await supabase
+      .from("subscribers")
+      .insert({ email });
+
+    if (error) {
+      console.error("Error guardando email:", error.message);
+      setErrorMsg("No se pudo guardar tu email. Intenta de nuevo.");
+    } else {
+      setIsSubmitted(true);
+    }
   };
 
   if (isSubmitted) {
@@ -72,6 +86,11 @@ const InterestForm = () => {
             />
           </div>
           
+          {/* Si hay error, muestra mensaje bajo el formulario */}
+          {errorMsg && (
+            <p className="text-red-600 text-sm">{errorMsg}</p>
+          )}
+
           <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
             Notify Me When Ready
           </Button>

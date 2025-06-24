@@ -1,9 +1,11 @@
 import { CheckCircle, FileText, TrendingUp, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useNavigate } from "react-router-dom";
 
 const Solution = () => {
   const { isVisible, elementRef } = useScrollAnimation();
+  const navigate = useNavigate();
 
   return (
     <section className="py-20 bg-white" ref={elementRef}>
@@ -65,8 +67,12 @@ const Solution = () => {
               </div>
             </div>
             
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-              Get Your First Report Free
+             <Button 
+              size="lg" 
+              className="w-full bg-blue-600 hover:bg-blue-700 text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              onClick={() => navigate("/interest")}
+            >
+              Subscribe and Be the First to Know
             </Button>
           </div>
           
