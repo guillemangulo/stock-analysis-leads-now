@@ -1,14 +1,17 @@
+
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Pricing = () => {
   const navigate = useNavigate();
+  const { isVisible, elementRef } = useScrollAnimation();
 
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-900 to-slate-900 text-white">
+    <section className="py-20 bg-gradient-to-br from-blue-900 to-slate-900 text-white" ref={elementRef}>
       <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto text-center mb-16">
+        <div className={`max-w-4xl mx-auto text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Start Your Free Trial Today
           </h2>
@@ -18,7 +21,7 @@ const Pricing = () => {
         </div>
         
         <div className="max-w-lg mx-auto">
-          <div className="bg-white text-gray-900 rounded-2xl shadow-2xl p-8 relative">
+          <div className={`bg-white text-gray-900 rounded-2xl shadow-2xl p-8 relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '200ms' }}>
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <span className="bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-bold">
                 MOST POPULAR
@@ -68,7 +71,7 @@ const Pricing = () => {
           </div>
         </div>
         
-        <div className="text-center mt-12 max-w-2xl mx-auto">
+        <div className={`text-center mt-12 max-w-2xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '400ms' }}>
           <p className="text-gray-300 leading-relaxed">
             <strong>Money-Back Guarantee:</strong> If our reports don't help you make better investment decisions 
             within 30 days, we'll refund every penny. No questions asked.

@@ -2,9 +2,11 @@
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const FAQ = () => {
   const [openItems, setOpenItems] = useState<number[]>([]);
+  const { isVisible, elementRef } = useScrollAnimation();
 
   const toggleItem = (index: number) => {
     setOpenItems(prev => 
@@ -42,9 +44,9 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50" ref={elementRef}>
       <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto text-center mb-16">
+        <div className={`max-w-4xl mx-auto text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
             Common Questions
           </h2>
@@ -56,7 +58,9 @@ const FAQ = () => {
         <div className="max-w-3xl mx-auto space-y-6">
           {faqs.map((faq, index) => (
             <Collapsible key={index} open={openItems.includes(index)} onOpenChange={() => toggleItem(index)}>
-              <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`} style={{ transitionDelay: `${index * 100}ms` }}>
                 <CollapsibleTrigger className="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 rounded-xl">
                   <h3 className="text-lg font-bold text-gray-900 pr-4">
                     {faq.question}
